@@ -1,0 +1,38 @@
+<section class="home bg-light">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center">
+                         <img src="/assets/image/logo.png" class="img-fluid" width="200" alt="">
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group mb-3 shadow-sm">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </span>
+                            <!-- <input type="text" class="form-control shadow-sm" placeholder="Search Name" [(ngModel)]="name" [disabled]="loading" /> -->
+                            <input type="text" class="form-control" placeholder="Search Name" [(ngModel)]="name" (ngModelChange)="onNameChange()" [disabled]="loading" />
+
+                            <button class="btn btn-primary" (click)="playSong()" [disabled]="loading">
+                                <span *ngIf="!loading">Search</span>
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                            </button>
+                        </div>
+
+                        <div *ngIf="audioSrc && name.trim()" class="mt-4">
+                            <p class="fw-bold text-center fs-5">
+                                🎉 Let’s celebrate <b class="text-primary">{{ name }}</b>’s Birthday! 🎶🎂
+                            </p>
+                            <audio controls [src]="audioSrc" class="w-100 shadow-sm rounded-pill"></audio>
+                        </div>
+
+                        <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+                            {{ errorMessage }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
